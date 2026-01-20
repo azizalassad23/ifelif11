@@ -3,227 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lembar Jawab Python Kelas 11</title>
+    <title>Ujian Python</title>
     <style>
-        :root {
-            --primary: #2563eb;
-            --bg: #f3f4f6;
-            --card: #ffffff;
-            --text: #1f2937;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--card);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            text-align: center;
-            color: var(--primary);
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        input[type="text"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-family: monospace; /* Agar kodingan terlihat rapi */
-            font-size: 14px;
-        }
-
-        textarea {
-            height: 150px;
-            resize: vertical;
-        }
-
-        button {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        button:hover {
-            background-color: #1d4ed8;
-        }
-
-        button:disabled {
-            background-color: #9ca3af;
-            cursor: not-allowed;
-        }
-
-        .alert {
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 6px;
-            display: none;
-            text-align: center;
-        }
-
-        .success { background-color: #d1fae5; color: #065f46; }
-        .error { background-color: #fee2e2; color: #991b1b; }
-
-        .info-box {
-            background-color: #e0f2fe;
-            border-left: 5px solid var(--primary);
-            padding: 15px;
-            margin-bottom: 25px;
-            font-size: 0.9em;
-        }
+        body { font-family: sans-serif; padding: 20px; max-width: 600px; margin: auto; }
+        label { display: block; margin-top: 15px; font-weight: bold;}
+        input, textarea, select { width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box; }
+        button { margin-top: 20px; padding: 15px; width: 100%; background: blue; color: white; border: none; font-size: 16px; cursor: pointer;}
+        #status { margin-top: 20px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Praktek IF-ELIF-ELSE Python</h1>
+    <h2>Form Jawaban Python</h2>
     
-    <div class="info-box">
-        <strong>Petunjuk:</strong> Tuliskan kode program Python untuk setiap soal di kolom yang tersedia. Pastikan indentasi kode benar.
-    </div>
+    <form name="submit-to-google-sheet">
+        <label>Nama Lengkap</label>
+        <input type="text" name="nama" required placeholder="Nama Siswa">
 
-    <form name="submit-to-google-sheet" id="examForm">
-        
-        <div class="form-group">
-            <label for="nama">Nama Lengkap</label>
-            <input type="text" id="nama" name="nama" required placeholder="Contoh: Budi Santoso">
-        </div>
+        <label>Kelas</label>
+        <select name="kelas" required>
+            <option value="11-RPL-1">11 RPL 1</option>
+            <option value="11-TKJ-1">11 TKJ 1</option>
+        </select>
 
-        <div class="form-group">
-            <label for="kelas">Kelas</label>
-            <select id="kelas" name="kelas" required>
-                <option value="">-- Pilih Kelas --</option>
-                <option value="XI A">XI A</option>
-                <option value="XI B">XI B</option>
-                <option value="XI C">XI C</option>
-            </select>
-        </div>
+        <label>Jawaban Soal 1</label>
+        <textarea name="no1" required></textarea>
 
-        <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+        <label>Jawaban Soal 2</label>
+        <textarea name="no2" required></textarea>
 
-        <div class="form-group">
-            <label>Soal 1: Wujud Air (If-Elif-Else)</label>
-            <textarea name="no1" required placeholder="Tulis kodemu di sini..."></textarea>
-        </div>
+        <label>Jawaban Soal 3</label>
+        <textarea name="no3" required></textarea>
 
-        <div class="form-group">
-            <label>Soal 2: Konversi Nilai (Grade A-E)</label>
-            <textarea name="no2" required placeholder="Tulis kodemu di sini..."></textarea>
-        </div>
+        <label>Jawaban Soal 4</label>
+        <textarea name="no4" required></textarea>
 
-        <div class="form-group">
-            <label>Soal 3: Kelayakan SIM (Nested If / Logic)</label>
-            <textarea name="no3" required placeholder="Tulis kodemu di sini..."></textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Soal 4: Diskon Belanja</label>
-            <textarea name="no4" required placeholder="Tulis kodemu di sini..."></textarea>
-        </div>
-
-        <button type="submit" id="btnSubmit">Kirim Jawaban</button>
+        <button type="submit">KIRIM JAWABAN</button>
     </form>
+    
+    <p id="status"></p>
 
-    <div id="msgSuccess" class="alert success">
-        ✅ Jawaban berhasil dikirim! Terima kasih.
-    </div>
-    <div id="msgError" class="alert error">
-        ❌ Terjadi kesalahan. Coba periksa koneksi internet Anda.
-    </div>
-</div>
-
-<script>
-    // -----------------------------------------------------------
-    // PASTE URL BARU DARI HASIL 'NEW DEPLOYMENT' DI SINI
-    // Pastikan akhiran URL adalah /exec (bukan /edit)
-    // -----------------------------------------------------------
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwIYXEs9vIxT_KH1P0kuOFh8l8nWfei9oVo_fspCdXOMPRSU_WdT5qE5W4M-tSXk2k/exec'; 
-    // -----------------------------------------------------------
-
-    const form = document.forms['submit-to-google-sheet'];
-    const btn = document.getElementById('btnSubmit');
-    const msgSuccess = document.getElementById('msgSuccess');
-    const msgError = document.getElementById('msgError');
-
-    form.addEventListener('submit', e => {
-        e.preventDefault();
+    <script>
+        // MASUKKAN URL BARU ANDA DISINI (PASTIKAN AKHIRNYA /exec)
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbx7H9Mdkk1HniX5GO8QHI1QAabdikqOHVN39yeGbBWjUufM4yLVCB31-L9rDbxp1rZa/exec';
         
-        // UI Loading
-        btn.disabled = true;
-        btn.innerText = 'Sedang Mengirim...';
-        msgSuccess.style.display = 'none';
-        msgError.style.display = 'none';
+        const form = document.forms['submit-to-google-sheet'];
+        const statusTxt = document.getElementById('status');
 
-        // Menggunakan fetch
-        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                console.log('Server response:', response);
-                if (response.ok) {
-                    // Berhasil (HTTP 200)
-                    msgSuccess.style.display = 'block';
-                    msgSuccess.innerHTML = "✅ Jawaban berhasil dikirim! Data tersimpan.";
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            statusTxt.innerHTML = "⏳ Sedang mengirim...";
+            
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    statusTxt.innerHTML = "✅ Terkirim! Cek Google Sheet.";
+                    console.log('Success!', response);
                     form.reset();
-                    btn.disabled = false;
-                    btn.innerText = 'Kirim Jawaban';
-                } else {
-                    // Gagal dari sisi server
-                    throw new Error('Respon server tidak OK');
-                }
-            })
-            .catch(error => {
-                // Error Jaringan atau CORS
-                console.error('Error!', error.message);
-                
-                // TRIK KHUSUS:
-                // Google Apps Script kadang mengembalikan error 'CORS' meskipun data masuk.
-                // Kita bisa cek manual di Sheet. Namun, untuk amannya, kita tampilkan pesan ini:
-                msgError.style.display = 'block';
-                msgError.innerHTML = "❌ Gagal terhubung. Pastikan internet lancar atau hubungi Guru.";
-                
-                btn.disabled = false;
-                btn.innerText = 'Kirim Jawaban';
-            });
-    });
-</script>
+                })
+                .catch(error => {
+                    statusTxt.innerHTML = "❌ Error! " + error.message;
+                    console.error('Error!', error.message);
+                });
+        });
+    </script>
 
 </body>
-
 </html>
-
-
-
-
-
