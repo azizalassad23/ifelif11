@@ -167,7 +167,8 @@
 
 <script>
     // -----------------------------------------------------------
-    // KONFIGURASI: PASTE URL WEB APP GOOGLE SCRIPT ANDA DI BAWAH INI
+    // PASTE URL BARU DARI HASIL 'NEW DEPLOYMENT' DI SINI
+    // Pastikan akhiran URL adalah /exec (bukan /edit)
     // -----------------------------------------------------------
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwkOVlFUTrIheOP6nCWYDaAsUTLgDNw1snMZJAeRTIQS-3uPfHnRuZWVOtL90uOEvsd/exec'; 
     // -----------------------------------------------------------
@@ -180,30 +181,40 @@
     form.addEventListener('submit', e => {
         e.preventDefault();
         
-        // Ubah tombol jadi loading
+        // UI Loading
         btn.disabled = true;
-        btn.innerHTML = 'Sedang Mengirim...';
+        btn.innerText = 'Sedang Mengirim...';
         msgSuccess.style.display = 'none';
         msgError.style.display = 'none';
 
+        // Menggunakan fetch
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => {
-                // Tampilkan pesan sukses
-                msgSuccess.style.display = 'block';
-                // Reset form
-                form.reset();
-                // Kembalikan tombol
-                btn.disabled = false;
-                btn.innerHTML = 'Kirim Jawaban';
-                
-                // Scroll ke bawah agar pesan terlihat
-                window.scrollTo(0, document.body.scrollHeight);
+                console.log('Server response:', response);
+                if (response.ok) {
+                    // Berhasil (HTTP 200)
+                    msgSuccess.style.display = 'block';
+                    msgSuccess.innerHTML = "✅ Jawaban berhasil dikirim! Data tersimpan.";
+                    form.reset();
+                    btn.disabled = false;
+                    btn.innerText = 'Kirim Jawaban';
+                } else {
+                    // Gagal dari sisi server
+                    throw new Error('Respon server tidak OK');
+                }
             })
             .catch(error => {
+                // Error Jaringan atau CORS
                 console.error('Error!', error.message);
+                
+                // TRIK KHUSUS:
+                // Google Apps Script kadang mengembalikan error 'CORS' meskipun data masuk.
+                // Kita bisa cek manual di Sheet. Namun, untuk amannya, kita tampilkan pesan ini:
                 msgError.style.display = 'block';
+                msgError.innerHTML = "❌ Gagal terhubung. Pastikan internet lancar atau hubungi Guru.";
+                
                 btn.disabled = false;
-                btn.innerHTML = 'Kirim Jawaban';
+                btn.innerText = 'Kirim Jawaban';
             });
     });
 </script>
@@ -211,6 +222,7 @@
 </body>
 
 </html>
+
 
 
 
